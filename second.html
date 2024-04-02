@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>timer!!!</title>
+    <link rel="stylesheet" href="second.css" />
+  </head>
+  <body>
+    <div class="outline">
+      <div class="timer">0.0</div>
+      <div>
+        <button class="start" onclick="startTimer()">Start</button>
+        <button class="stop" onclick="stopTimer()">Stop</button>
+        <button class="reset" onclick="resetTimer()">Reset</button>
+      </div>
+    </div>
+
+    <script>
+      let seconds = 0;
+      let time = document.querySelector(".timer");
+      let timer;
+
+      function startTimer() {
+        timer = setInterval(() => {
+          seconds += 0.1;
+          time.textContent = seconds.toFixed(1); // 현재 시간을 소숫점 한 자리까지 표시
+        }, 100);
+      }
+
+      function stopTimer() {
+        clearInterval(timer);
+      }
+
+      function resetTimer() {
+        clearInterval(timer);
+        seconds = 0;
+        time.textContent = seconds.toFixed(1);
+      }
+    </script>
+  </body>
+</html>
