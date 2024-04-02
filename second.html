@@ -17,15 +17,25 @@
     </div>
 
     <script>
+      let hours = 0;
+      let minutes = 0;
       let seconds = 0;
       let time = document.querySelector(".timer");
       let timer;
 
       function startTimer() {
         timer = setInterval(() => {
-          seconds += 0.1;
-          time.textContent = seconds.toFixed(1); // 현재 시간을 소숫점 한 자리까지 표시
-        }, 100);
+          seconds++;
+          if (seconds >= 60) {
+            seconds = 0;
+            minutes++;
+          }
+          if (minutes >= 60) {
+            minutes = 0;
+            hours++;
+          }
+          updateTime();
+        }, 1000); // 1초마다 실행
       }
 
       function stopTimer() {
@@ -34,8 +44,18 @@
 
       function resetTimer() {
         clearInterval(timer);
+        hours = 0;
+        minutes = 0;
         seconds = 0;
-        time.textContent = seconds.toFixed(1);
+        updateTime();
+      }
+
+      function updateTime() {
+        time.textContent = pad(hours) + ":" + pad(minutes) + ":" + pad(seconds); // 현재 시간을 "00:00:00" 형식으로 표시
+      }
+
+      function pad(num) {
+        return num < 10 ? "0" + num : num; // 숫자가 한 자리일 경우 앞에 0을 붙여 반환
       }
     </script>
   </body>
