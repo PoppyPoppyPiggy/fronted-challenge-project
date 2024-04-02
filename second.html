@@ -51,11 +51,11 @@
       }
 
       function updateTime() {
-        time.textContent = pad(hours) + ":" + pad(minutes) + ":" + pad(seconds); // 현재 시간을 "00:00:00" 형식으로 표시
+        time.textContent = pad(hours) + ":" + pad(minutes) + ":" + pad(seconds); 
       }
 
       function pad(num) {
-        return num < 10 ? "0" + num : num; // 숫자가 한 자리일 경우 앞에 0을 붙여 반환
+        return num < 10 ? "0" + num : num; 
       }
     </script>
   </body>
