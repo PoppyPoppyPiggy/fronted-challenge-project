@@ -31,6 +31,9 @@
   display: inline-block;
   margin-bottom: 6px;
 }
+.todo {
+  border: none;
+}
 .second button {
   border: 2px solid black;
   border-radius: 3px;
