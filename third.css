@@ -53,3 +53,15 @@
 .selected {
   background-color: lightblue;
 }
+
+/* 활성화되지 않은 버튼 기본 스타일 */
+.first button:not(.selected) {
+  background-color: white; /* 기본 배경 색상 */
+  color: black; /* 기본 텍스트 색상 */
+}
+
+/* 활성화된 버튼 스타일 */
+.first button.selected {
+  background-color: #4caf50; /* 활성 버튼의 배경 색상 */
+  color: white; /* 활성 버튼의 텍스트 색상 */
+}

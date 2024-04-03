@@ -11,13 +11,14 @@
       <div class="content">
         <h1>TO-DO LIST</h1>
         <div class="first">
-          <button class="all">전체</button>
-          <button class="complete">완료</button>
-          <button class="uncomplete">미완료</button>
+          <button class="all" onclick="showAllTodos()">전체</button>
+          <button class="complete" onclick="showCompletedTodos()">완료</button>
+          <button class="uncomplete" onclick="showUncompletedTodos()">
+            미완료
+          </button>
         </div>
 
         <div class="second">
-          <!-- <h4>할 일을 작성해주세요.</h4> -->
           <input type="text" id="todoInput" placeholder="할 일을 입력하세요" />
           <div id="priorityButtons">
             <button class="priorityBtn" value="낮음">낮음</button>
@@ -33,11 +34,9 @@
     </div>
 
     <script>
-      // 각 우선순위 버튼에 대한 이벤트 리스너 추가
       const priorityButtons = document.querySelectorAll(".priorityBtn");
       priorityButtons.forEach((button) => {
         button.addEventListener("click", function () {
-          // 선택된 버튼 스타일 변경
           priorityButtons.forEach((btn) => {
             btn.classList.remove("selected");
           });
@@ -61,22 +60,27 @@
           return;
         }
 
-        const priority = selectedPriority.value;
+        const priority = selectedPriority.textContent; // Correct use of textContent
 
         const todoItem = document.createElement("div");
         todoItem.classList.add("todo");
+        todoItem.classList.add("uncompleted");
 
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
+
         checkbox.addEventListener("change", function () {
           if (this.checked) {
-            todoText.style.textDecoration = "line-through";
+            todoItem.classList.add("completed");
+            todoItem.classList.remove("uncompleted");
           } else {
-            todoText.style.textDecoration = "none";
+            todoItem.classList.add("uncompleted");
+            todoItem.classList.remove("completed");
           }
+          updateTodoItemDecoration(todoItem);
         });
 
-        const todoText = document.createElement("h4");
+        const todoText = document.createElement("span");
         todoText.textContent = `${todoInput.value} (우선순위: ${priority})`;
 
         const editButton = document.createElement("button");
@@ -95,9 +99,42 @@
         document.getElementById("todoList").appendChild(todoItem);
 
         todoInput.value = "";
-        // 선택된 우선순위 버튼 해제
         priorityButtons.forEach((btn) => {
           btn.classList.remove("selected");
+        });
+      }
+
+      function updateTodoItemDecoration(todoItem) {
+        const todoText = todoItem.querySelector("span");
+        if (todoItem.classList.contains("completed")) {
+          todoText.style.textDecoration = "line-through";
+        } else {
+          todoText.style.textDecoration = "none";
+        }
+      }
+
+      function showAllTodos() {
+        const todos = document.querySelectorAll(".todo");
+        todos.forEach((todo) => {
+          todo.style.display = "";
+        });
+      }
+
+      function showCompletedTodos() {
+        const todos = document.querySelectorAll(".todo");
+        todos.forEach((todo) => {
+          todo.style.display = todo.classList.contains("completed")
+            ? ""
+            : "none";
+        });
+      }
+
+      function showUncompletedTodos() {
+        const todos = document.querySelectorAll(".todo");
+        todos.forEach((todo) => {
+          todo.style.display = todo.classList.contains("uncompleted")
+            ? ""
+            : "none";
         });
       }
     </script>
