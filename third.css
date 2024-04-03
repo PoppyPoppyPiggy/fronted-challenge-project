@@ -1,0 +1,52 @@
+.outline {
+  border: 2px solid black;
+  margin: 20px;
+  text-align: center;
+  border-radius: 5px;
+}
+.content {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+.content h1 {
+  font-size: 60px;
+}
+
+.first {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.first button {
+  width: 120px;
+  height: 40px;
+  display: inline-block;
+  border: 2px solid black;
+  background-color: white;
+  margin-right: 20px; /* 버튼 사이 간격 조정 */
+}
+
+.second * {
+  display: inline-block;
+  margin-bottom: 6px;
+}
+.second button {
+  border: 2px solid black;
+  border-radius: 3px;
+  margin-right: 5px; /* 버튼 사이 간격 조정 */
+}
+.third {
+  border: 2px solid black;
+  padding: 2px;
+  margin: 2px;
+  text-align: left;
+}
+.todo * {
+  display: inline-block;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.selected {
+  background-color: lightblue;
+}
