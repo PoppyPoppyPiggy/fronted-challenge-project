@@ -11,6 +11,10 @@
         font-family: "NotoSansKR-Bold", "Noto Sans KR", Arial, sans-serif;
       }
       .container {
+        padding-left: 200px;
+        padding-right: 200px;
+
+        justify-content: center;
         width: auto;
         margin: 10px;
       }
@@ -34,16 +38,16 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
       .job-intro {
-        justify-content: space-around;
+        width: 100%;
         display: flex;
-        align-items: center;
+        justify-content: space-between;
         margin-top: 30px;
       }
+
       .job-images {
         display: flex;
-        justify-content: center; /* Changed to space-between */
+        justify-content: center;
         align-items: center;
-        flex-wrap: wrap;
         margin-top: 20px;
       }
       .job-image {
@@ -51,13 +55,13 @@
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
-        max-width: 400px;
+        max-width: 600px;
         margin: 10px;
         flex-grow: 1; /* Added to make each job-image expand to fill the available space */
       }
       .job-image img {
         margin: 10px;
-        max-height: 120px;
+        max-height: 200px;
       }
     </style>
   </head>
@@ -77,7 +81,7 @@
       </div>
 
       <div class="content-job">
-        <h3>미니인턴으로 취업하세요</h3>
+        <h2>미니인턴으로 취업하세요</h2>
         <div class="job-intro">
           <p>
             이제 집, 학교, 도서관, 카페에서 인턴십을 경험하고, 실무역량평가로
@@ -98,6 +102,23 @@
             <img src="./image/fifth/자꾸다꾸logo.png" alt="" />
             <img src="./image/fifth/LULUlogo.png" alt="" />
           </div>
+        </div>
+        <div>
+          <img src="./image/fifth/service.png" alt="" />
+        </div>
+
+        <div class="enterprises">
+          <h2>채용중인 기업을 확인하세요</h2>
+          <div class="job-intro">
+            <p>내게 맞는 기업을 찾았나요 바로 지원해보세요</p>
+            <a href="./real.html">모든 채용정보 보기</a>
+          </div>
+          <div>
+            <img src="./image/fifth/enterprises.png" alt="" />
+          </div>
+        </div>
+        <div class="end">
+          <img src="./image/fifth/end.png" alt="" />
         </div>
       </div>
     </div>
