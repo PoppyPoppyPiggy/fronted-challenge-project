@@ -1,13 +1,14 @@
 .outline {
-  width: 800px;
-  height: 400px;
+  width: 400px;
+  height: 200px;
   overflow: hidden;
   position: relative;
-  margin: auto; /* 슬라이더를 페이지 중앙에 배치 */
+  /* margin: auto; 슬라이더를 페이지 중앙에 배치 */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 슬라이더에 그림자 효과 추가 */
   border-radius: 10px; /* 슬라이더 모서리 둥글게 */
 }
 .slide {
+  background-color: aquamarine;
   width: 100%;
   height: 100%; /* 슬라이드 높이를 .outline과 동일하게 설정 */
   display: flex; /* 이미지를 중앙에 배치하기 위해 flex 사용 */
@@ -18,6 +19,9 @@
   left: 0;
   opacity: 0; /* 슬라이드 숨김 */
   transition: opacity 1s ease-in-out; /* 부드러운 페이드 인/아웃 효과 */
+}
+.slide * {
+  justify-items: center;
 }
 .slide img {
   max-width: 100%;
@@ -53,4 +57,10 @@
 }
 .next_button {
   right: 10px;
+}
+.component p {
+  font-size: 30px;
+  font-weight: bold;
+  justify-content: center;
+  text-align: center;
 }

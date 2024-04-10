@@ -28,5 +28,5 @@ document.addEventListener("DOMContentLoaded", (event) => {
   document.querySelector(".next_button").addEventListener("click", nextSlide);
 
   // 자동 슬라이드
-  setInterval(nextSlide, 2000); // 2초마다 nextSlide 함수를 호출합니다.
+  setInterval(nextSlide, 4000); // 2초마다 nextSlide 함수를 호출합니다.
 });
