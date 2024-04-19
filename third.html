@@ -60,7 +60,7 @@
           return;
         }
 
-        const priority = selectedPriority.textContent; // Correct use of textContent
+        const priority = selectedPriority.textContent;
 
         const todoItem = document.createElement("div");
         todoItem.classList.add("todo");
@@ -95,6 +95,13 @@
         todoItem.appendChild(checkbox);
         todoItem.appendChild(todoText);
         todoItem.appendChild(editButton);
+
+        const removeButton = document.createElement("button");
+        removeButton.textContent = "제거";
+        removeButton.addEventListener("click", function () {
+          todoItem.remove();
+        });
+        todoItem.appendChild(removeButton);
 
         document.getElementById("todoList").appendChild(todoItem);
 
