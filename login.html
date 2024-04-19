@@ -63,47 +63,52 @@
   <body>
     <div class="outline">
       <div class="intro">
-        <h1>Please Log In</h1>
+        <h1>로그인 해주세요!🤗🤗🤗</h1>
       </div>
       <div class="input">
-        <form action="" method="post" id="loginForm">
-          <label for="id">User ID:</label>
+        <form id="loginForm" action="logined.html" method="post">
+          <label for="id">ID:</label>
           <input type="text" id="id" name="id" required />
 
           <label for="password">Password:</label>
           <input type="password" id="password" name="password" required />
 
-          <button type="submit">Log In</button>
+          <button type="submit">입력</button>
         </form>
       </div>
     </div>
+
     <script>
       let userInfo = {
         1: { id: "1234", password: "1234" },
       };
 
-      document.getElementById("loginForm").onsubmit = function (event) {
-        const username = document.getElementById("id").value;
-        const password = document.getElementById("password").value;
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent page reload
 
-        let loggedIn = false;
+          const username = document.getElementById("id").value;
+          const password = document.getElementById("password").value;
 
-        for (const key in userInfo) {
-          if (
-            userInfo[key].id === username &&
-            userInfo[key].password === password
-          ) {
-            loggedIn = true;
-            alert("로그인에 성공하였습니다");
-            break;
+          let loggedIn = false;
+
+          for (const key in userInfo) {
+            if (
+              userInfo[key].id === username &&
+              userInfo[key].password === password
+            ) {
+              loggedIn = true;
+              break;
+            }
           }
-        }
 
-        if (!loggedIn) {
-          alert("ID 또는 PASSWORD가 틀렸습니다");
-          event.preventDefault();
-        }
-      };
+          if (loggedIn) {
+            window.location.href = "logined.html";
+          } else {
+            alert("ID 또는 PASSWORD가 틀렸습니다");
+          }
+        });
     </script>
   </body>
 </html>
