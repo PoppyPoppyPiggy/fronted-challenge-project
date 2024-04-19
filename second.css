@@ -13,6 +13,7 @@ body {
   height: 300px;
   padding: 10px;
   flex-direction: column;
+  margin: 0 auto;
 }
 
 .timer {

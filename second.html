@@ -17,41 +17,49 @@
     </div>
 
     <script>
-      let hours = 0;
-      let minutes = 0;
-      let seconds = 0;
-      let time = document.querySelector(".timer");
       let timer;
+      let startTime;
+      let elapsedTime = 0;
+      let timerInterval;
+      const timeDisplay = document.querySelector(".timer");
+      const startButton = document.querySelector(".start");
+      const stopButton = document.querySelector(".stop");
+      const resetButton = document.querySelector(".reset");
 
       function startTimer() {
-        timer = setInterval(() => {
-          seconds++;
-          if (seconds >= 60) {
-            seconds = 0;
-            minutes++;
-          }
-          if (minutes >= 60) {
-            minutes = 0;
-            hours++;
-          }
-          updateTime();
-        }, 1000); // 1초마다 실행
+        startTime = Date.now() - elapsedTime;
+        timerInterval = setInterval(updateTime, 10);
+        startButton.disabled = true;
+        stopButton.disabled = false;
+        resetButton.disabled = false;
       }
 
       function stopTimer() {
-        clearInterval(timer);
+        clearInterval(timerInterval);
+        startButton.disabled = false;
+        stopButton.disabled = true;
       }
 
       function resetTimer() {
-        clearInterval(timer);
-        hours = 0;
-        minutes = 0;
-        seconds = 0;
-        updateTime();
+        clearInterval(timerInterval);
+        elapsedTime = 0;
+        displayTime(0);
+        startButton.disabled = false;
+        stopButton.disabled = true;
       }
 
       function updateTime() {
-        time.textContent = pad(hours) + ":" + pad(minutes) + ":" + pad(seconds);
+        const currentTime = Date.now();
+        elapsedTime = currentTime - startTime;
+        displayTime(elapsedTime);
+      }
+
+      function displayTime(milliseconds) {
+        const minutes = Math.floor(milliseconds / (1000 * 60));
+        const seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
+        const millisecondsLeft = Math.floor((milliseconds % 1000) / 10);
+        timeDisplay.textContent =
+          pad(minutes) + ":" + pad(seconds) + "." + pad(millisecondsLeft);
       }
 
       function pad(num) {
